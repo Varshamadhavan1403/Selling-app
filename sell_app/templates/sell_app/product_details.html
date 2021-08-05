@@ -1,0 +1,52 @@
+{% extends 'sell_app/base1.html' %}
+{% block body %}
+
+<!--card section-->
+<a href="{% url 'home' %}">&#8592; Back</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>description</title>
+</head>
+<body>
+<section id="about" class="why-us">
+    <div class="container">
+   <div class=row>
+   <div class="container">
+   <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for product in products %}
+    <div class="col">
+  
+      <div class="card">
+      <img 
+        class="card-img-top" 
+        src="{{product.images1.url}}" 
+        
+        alt="Not supported"
+      />
+    <div class="card-body">
+      <h4 class="card-title">{{product.product_name}}</h4>
+    </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><b>Category</b> : {{product.category}}</li>
+    <li class="list-group-item"><b>Price</b> :{{product.price}}</li>
+  </ul>
+  <div class="card-footer" style="background-color:white">
+    <a href="{% url 'edit_post' product.pk %}" class="btn btn-dark">Edit</a>
+    <a href="{% url 'viewbuyers' product.pk %}" class="btn btn-dark">View buyers</a>
+    <a href="{% url 'deleteproduct' product.pk %}" class="btn btn-dark">delete</a>
+    
+   
+
+</div>
+</div>
+</div>
+
+{% endfor %}
+</div>
+</div>
+{% endblock body %}
+</body>

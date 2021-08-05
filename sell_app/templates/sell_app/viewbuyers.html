@@ -1,0 +1,72 @@
+{% extends 'sell_app/base1.html' %}
+{% block body %}
+
+<a href="{% url 'home' %}">&#8592; Back</a>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>description</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="container-fluid">
+                <div class ="wrapper-row">
+                    <div class="preview-cols-md-6">
+                        <div class="preview-pic tab-content">
+                           
+                            {% for order in orders%}
+                            <!-- <div class="tab-pane active" id="pic-1"><img src = "{{product.images1.url}}"> -->
+                            </div>
+                        </div>
+                    </div>
+                <div class ="wrapper-row">  
+                        {{order.item.product_name}}
+                        <!-- {{order.order_status}} -->
+                      
+                        {{order.buyer_name}}
+                        {{order.my_price}}
+
+                       
+                       
+                           <div class="col-md-6 col-sm-12">
+                         
+                               {% if order.order_status %}
+
+                                <p>Order is Accepted</p>
+                                
+    
+
+                                <form method = "POST" >
+                                    {% csrf_token %}
+
+                                <a href="{% url 'send_mail' order.pk %}"> 
+                                    <button class="btn btn-dark" type ="button">Sell</button></a>
+                                    
+                                 </form>
+
+                                {% else %} 
+                                    
+                                    <p>Order is pending</p>
+                                    <!-- <input class="btn btn-dark"type="submit" value="Accept"> -->
+                                    <a href="{% url 'accept' order.pk %}"> <button class="btn btn-dark">Accept</button> </a>
+                                {% endif %}
+
+                           {% endfor %}
+
+                       </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+{% endblock body %}

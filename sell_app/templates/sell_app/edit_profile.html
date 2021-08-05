@@ -1,0 +1,39 @@
+{% extends 'sell_app/base1.html' %}
+
+{% block body %}
+<div class="global-container">
+    <div class="card login-form">
+    <div class="card-body">
+        <h3 class="card-title text-center">Register in to Django</h3>
+        <div class="card-text">
+            {% if messages %}
+            
+                    {% for message in messages %}
+                    <div class="alert alert-info">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+              
+                {% endif %}
+            <!--
+
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div> -->
+            <form method="post">
+                {%  csrf_token %}
+                {{userform.as_p}}
+                {{detailsform.as_p}}
+                
+               
+                 <input  class="btn btn-primary btn-block mt-2" type="submit" value="Update">
+               
+              
+            </form>
+            <a href="{% url 'home' %}">&#8592; Back</a>
+
+            <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
+
+        </div>
+    </div>
+</div>
+</div>
+  {% endblock body %}

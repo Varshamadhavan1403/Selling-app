@@ -1,0 +1,39 @@
+{% extends 'sell_app/base1.html' %}
+{% block body %}
+<a href="{% url 'home' %}">&#8592; Back</a>
+
+<!--card section-->
+<section id="about" class="why-us">
+    <div class="container">
+   <div class=row>
+
+   <div class="container">
+   <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for product in products %}
+    <div class="col">
+      <div class="card">
+      <img 
+        class="card-img-top" 
+        src="{{product.images1.url}}" 
+        
+        alt="Not supported"
+      />
+    <div class="card-body">
+      <h4 class="card-title">{{product.product_name}}</h4>
+    </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><b>Category</b> : {{product.category}}</li>
+    <li class="list-group-item"><b>Price</b> :{{product.price}}</li>
+  </ul>
+  <div class="card-footer" style="background-color:white">
+    <a href="{% url 'product_desc' product.pk %}" class="btn btn-dark">View More</a>
+   
+
+</div>
+</div>
+</div>
+
+{% endfor %}
+</div>
+</div>
+{% endblock body %}

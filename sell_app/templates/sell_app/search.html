@@ -1,0 +1,18 @@
+{% extends 'sell_app/base1.html' %}
+
+
+{% block body %}
+{% if products %}
+  <center>Search result found</center>
+  {% for product in products %}
+    <center><h1>{{product.product_name}} <h1></center>
+    <center><h1>{{product.price}} <h1></center>
+  {% endfor %}
+{% else %}
+  <center>Search result not found</center>
+
+{% endif %}
+  {% endblock body %}
+
+
+
